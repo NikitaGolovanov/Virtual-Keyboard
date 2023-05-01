@@ -96,3 +96,74 @@ document.body.appendChild(pole)
 document.body.appendChild(klava)
 document.body.appendChild(podskazka)
 
+
+
+import {rus1, rus2, rus_up, rus_low, eng1, eng2, eng_up, eng_low, other, knopochki} from "./keycaps.js"
+
+var active_now = rus1
+var active_lang = "rus"
+
+
+var buttons = document.getElementsByTagName("button")
+
+function knopka_add(){
+    for (let i = 0; i < 64; ++i){
+        buttons[i].innerText=active_now[i]
+    }
+}
+knopka_add()
+
+var text = document.querySelector(".pole_dlya_texta")
+
+text.focus()
+
+text.addEventListener("blur",()=>text.focus())
+
+var body = document.body
+body.addEventListener("keydown", (e) => {
+    e.preventDefault()
+        console.log(e.key,e.location);
+    text.focus()
+    if(e.location<1&&e.key.substr(0,5)!='Arrow'&&!other.includes(e.key)){
+        if((rus1.includes(e.key)||rus2.includes(e.key))&&active_lang=="eng"){
+        }
+        buttons[active_now.indexOf(e.key)].classList.add("active")
+        if(e.key.length==1){
+            var cursor = text.selectionEnd
+            text.value = text.value.substr(0,text.selectionEnd)+e.key+text.value.substr(text.selectionEnd)
+            text.setSelectionRange(cursor+1,cursor+1)
+        }  
+        }else{
+            if(e.key=="CapsLock")buttons[29].classList.toggle("active")
+            if(e.key=="Shift")buttons[42].classList.toggle("active")
+            if(e.key=="Tab")buttons[14].classList.toggle("active")
+            if(e.key=="Backspace")buttons[13].classList.toggle("active")
+            if(e.key=="Enter")buttons[41].classList.toggle("active")
+            if(e.key=="Delete")buttons[28].classList.toggle("active")
+            if(e.key=="ArrowLeft")buttons[60].classList.toggle("active")
+            if(e.key=="ArrowDown")buttons[61].classList.toggle("active")
+            if(e.key=="ArrowRight")buttons[62].classList.toggle("active") 
+            if(e.key=="ArrowUp")buttons[53].classList.toggle("active")
+            if(e.key==" ")buttons[58].classList.add("active")
+            if(e.key=="Alt")buttons[57].classList.add("active")
+            if(e.key=="Control")buttons[55].classList.add("active")
+    }    
+},)    
+
+body.addEventListener("keyup", (e) => {
+    if(e.location<1&&e.key!="Delete"&&e.key.substr(0,5)!='Arrow'&&e.key!='CapsLock'&&e.key!=' '){
+        buttons[active_now.indexOf(e.key)].classList.remove("active")
+      }else{
+        if(e.key==" ")buttons[58].classList.remove("active")
+        if(e.key=="Alt")buttons[57].classList.remove("active")
+        if(e.key=="Shift")buttons[42].classList.remove("active")
+        if(e.key=="Delete")buttons[28].classList.remove("active")
+        if(e.key=="Control")buttons[55].classList.remove("active")
+        if(e.key=="ArrowLeft")buttons[60].classList.remove("active")
+        if(e.key=="ArrowDown")buttons[61].classList.remove("active")
+        if(e.key=="ArrowRight")buttons[62].classList.remove("active")
+        if(e.key=="ArrowUp")buttons[53].classList.remove("active")
+        if(e.key=="CapsLock")buttons[29].classList.remove("active")
+      }
+    e.preventDefault()
+});

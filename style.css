@@ -74,9 +74,17 @@ body {
 }
 
 button {
+    color: aliceblue;
     background-color: black;
     height: 50px;
     width: 40px;
+    transition: 0.4s;
+}
+
+button.active{
+    background-color: white;
+    color: black;
+
 }
 
 .knopka{
@@ -92,7 +100,7 @@ button {
 }
 
 .shift-l{
-    width: 132px;
+    width: 70px;
 }
 
 .space{
@@ -107,8 +115,8 @@ button {
     width: 100px;
 }
 
-.shift_r{
-    width: 100px;
+.shift-r{
+    width: 162px;
 }
 
 
