@@ -1,0 +1,122 @@
+body {
+    background-color: black;
+}
+.Task_Name {
+    position: absolute;
+    margin-left: 850px;
+    color: aliceblue;
+}
+
+.pole_dlya_texta {
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 520px;
+    width: 1000px;
+    word-break: break-all;
+}
+
+.klaviatura {
+    position: absolute;
+    margin-top: 430px;
+    margin-left: 520px;
+    background-color: aliceblue;
+    width: 1007px;
+    height: 300px;
+}
+
+.podskazka {
+    position: absolute;
+    margin-top: 750px;
+    margin-left: 580px;
+    text-align: center;
+    color: aliceblue;
+}
+
+.row_one {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row_two {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row_three {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row_four {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row_five {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    color: aliceblue;
+    background-color: black;
+    height: 50px;
+    width: 40px;
+    transition: 0.4s;
+}
+
+button.active{
+    background-color: aliceblue;
+    color: black;
+
+}
+
+.knopka{
+    width: 75px;
+}
+
+.tab{
+    width: 50px;
+}
+
+.caps{
+    width: 100px;
+}
+
+.shift-l{
+    width: 70px;
+}
+
+.space{
+    width: 398px;
+}
+
+.backspace{
+    width: 90px;
+}
+
+.enter{
+    width: 100px;
+}
+
+.shift-r{
+    width: 162px;
+}
+
+
