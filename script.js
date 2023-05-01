@@ -27,30 +27,30 @@ row_five.className = "row_five"
 
 var knopki = []
 for (let i = 0; i < 57; ++i){
-   knopki[i] = document.createElement("butt")
-   knopki[i].className = "butt"
+   knopki[i] = document.createElement("button")
+   knopki[i].className = "knopka"
 }
 
-var tab = document.createElement("butt")
+var tab = document.createElement("button")
 tab.className = "tab"
 
-var caps = document.createElement("butt")
+var caps = document.createElement("button")
 caps.className = "caps"
 
-var shift_l = document.createElement("butt")
-shift_l.className = "shift_l"
+var shift_l = document.createElement("button")
+shift_l.className = "shift-l"
 
-var space = document.createElement("butt")
+var space = document.createElement("button")
 space.className = "space"
 
-var backspace = document.createElement("butt")
+var backspace = document.createElement("button")
 backspace.className = "backspace"
 
-var enter = document.createElement("butt")
+var enter = document.createElement("button")
 enter.className = "enter"
 
-var shift_r = document.createElement("butt")
-shift_r.className = "shift_r"
+var shift_r = document.createElement("button")
+shift_r.className = "shift-r"
 
 for (let i = 0; i < 13; ++i){
     row_one.appendChild(knopki[i])
