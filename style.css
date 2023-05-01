@@ -27,7 +27,7 @@ body {
 .podskazka {
     position: absolute;
     margin-top: 750px;
-    margin-left: 800px;
+    margin-left: 580px;
     text-align: center;
     color: aliceblue;
 }
@@ -82,7 +82,7 @@ button {
 }
 
 button.active{
-    background-color: white;
+    background-color: aliceblue;
     color: black;
 
 }

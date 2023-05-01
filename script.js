@@ -88,7 +88,7 @@ for (let i = 52; i < 57; ++i){
 klava.appendChild(row_five)
 
 var podskazka = document.createElement("h2")
-podskazka.innerText = "Windows OS\nTo switch language {Left Shift + Left Alt}"
+podskazka.innerText = "Windows OS\nIt works only with the Russian layout, small letters.\nAlso check the caps on your computer, when the caps are included, it also does not work"
 podskazka.className = "podskazka"
 
 document.body.appendChild(tittle)
@@ -101,8 +101,6 @@ document.body.appendChild(podskazka)
 import {rus1, rus2, rus_up, rus_low, eng1, eng2, eng_up, eng_low, other, knopochki} from "./keycaps.js"
 
 var active_now = rus1
-var active_lang = "rus"
-
 
 var buttons = document.getElementsByTagName("button")
 
@@ -115,18 +113,11 @@ knopka_add()
 
 var text = document.querySelector(".pole_dlya_texta")
 
-text.focus()
-
-text.addEventListener("blur",()=>text.focus())
-
 var body = document.body
 body.addEventListener("keydown", (e) => {
     e.preventDefault()
         console.log(e.key,e.location);
-    text.focus()
     if(e.location<1&&e.key.substr(0,5)!='Arrow'&&!other.includes(e.key)){
-        if((rus1.includes(e.key)||rus2.includes(e.key))&&active_lang=="eng"){
-        }
         buttons[active_now.indexOf(e.key)].classList.add("active")
         if(e.key.length==1){
             var cursor = text.selectionEnd
@@ -153,17 +144,45 @@ body.addEventListener("keydown", (e) => {
 body.addEventListener("keyup", (e) => {
     if(e.location<1&&e.key!="Delete"&&e.key.substr(0,5)!='Arrow'&&e.key!='CapsLock'&&e.key!=' '){
         buttons[active_now.indexOf(e.key)].classList.remove("active")
-      }else{
-        if(e.key==" ")buttons[58].classList.remove("active")
-        if(e.key=="Alt")buttons[57].classList.remove("active")
-        if(e.key=="Shift")buttons[42].classList.remove("active")
-        if(e.key=="Delete")buttons[28].classList.remove("active")
-        if(e.key=="Control")buttons[55].classList.remove("active")
-        if(e.key=="ArrowLeft")buttons[60].classList.remove("active")
-        if(e.key=="ArrowDown")buttons[61].classList.remove("active")
-        if(e.key=="ArrowRight")buttons[62].classList.remove("active")
-        if(e.key=="ArrowUp")buttons[53].classList.remove("active")
-        if(e.key=="CapsLock")buttons[29].classList.remove("active")
-      }
+        }else{
+            if(e.key==" ")buttons[58].classList.remove("active")
+            if(e.key=="Alt")buttons[57].classList.remove("active")
+            if(e.key=="Shift")buttons[42].classList.remove("active")
+            if(e.key=="Delete")buttons[28].classList.remove("active")
+            if(e.key=="Control")buttons[55].classList.remove("active")
+            if(e.key=="ArrowLeft")buttons[60].classList.remove("active")
+            if(e.key=="ArrowDown")buttons[61].classList.remove("active")
+            if(e.key=="ArrowRight")buttons[62].classList.remove("active")
+            if(e.key=="ArrowUp")buttons[53].classList.remove("active")
+            if(e.key=="CapsLock")buttons[29].classList.remove("active")
+    }
     e.preventDefault()
 });
+
+for (let i = 0; i<buttons.length;++i){
+    buttons[i].addEventListener("mousedown",()=>{ 
+        if(i==54||i==63||i==59){
+            body.dispatchEvent(new KeyboardEvent("keydown",{"key": active_now[i],"location": 2}))
+        }else{
+            if(i==42||i==55||i==58){
+                body.dispatchEvent(new KeyboardEvent("keydown",{"key": active_now[i],"location": 1}))
+            }else{
+                body.dispatchEvent(new KeyboardEvent("keydown",{"key": active_now[i]}))
+            }
+        }
+    })
+}
+
+for (let i = 0; i<buttons.length;++i){
+    buttons[i].addEventListener("mouseup",()=>{ 
+        if(i==54||i==63||i==59){
+            body.dispatchEvent(new KeyboardEvent("keyup",{"key": active_now[i],"location": 2}))
+        }else{
+            if(i==42||i==55||i==58){
+                body.dispatchEvent(new KeyboardEvent("keyup",{"key": active_now[i],"location": 1}))
+            }else{
+                body.dispatchEvent(new KeyboardEvent("keyup",{"key": active_now[i]}))
+            }
+        }
+    })
+}
